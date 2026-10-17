@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#174a32">
+<title>CSI Youth Canteen | Youth Sunday</title>
+<style>
+:root{--green:#174a32;--green2:#246845;--cream:#fff8e9;--gold:#f5c94c;--ink:#26352b;--muted:#66736a;--red:#9f2e25}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#f3f5ef;color:var(--ink)}
+.hero{background:linear-gradient(140deg,rgba(15,58,38,.94),rgba(30,94,59,.91)),radial-gradient(circle at top right,#f5c94c,transparent 45%);color:#fff;padding:28px 18px 30px;text-align:center;border-bottom:5px solid var(--gold)}
+.cross{font-size:35px;color:var(--gold);line-height:1.2}.church{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#e9f3e9}
+h1{font-size:clamp(27px,7vw,42px);line-height:1.1;margin:10px 0 8px} .subtitle{font-size:15px;color:#f8edc9;margin:0}
+.pill{display:inline-block;background:var(--gold);color:#382b08;border-radius:999px;padding:7px 13px;font-weight:800;margin-top:15px;font-size:13px}
+main{max-width:850px;margin:0 auto;padding:18px 13px 36px}.intro{text-align:center;margin:3px 0 20px}.intro h2{color:var(--green);margin:0 0 5px;font-size:24px}.intro p{margin:0;color:var(--muted);font-size:14px}
+.menu{display:grid;grid-template-columns:1fr;gap:12px}.item{background:white;border:1px solid #e2e8de;border-radius:16px;padding:15px;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;box-shadow:0 3px 12px #183c2510}
+.item h3{font-size:16px;margin:0 0 5px}.item .desc{font-size:12px;color:var(--muted);margin:0}.price{font-size:21px;font-weight:850;color:var(--green);text-align:right}.qty{display:flex;align-items:center;gap:10px;justify-content:flex-end;margin-top:8px}.qty button{width:32px;height:32px;border:0;border-radius:50%;background:#e6f0e7;color:var(--green);font-size:20px;font-weight:700}.qty span{min-width:16px;text-align:center;font-weight:800}
+.panel{margin-top:18px;background:white;border:1px solid #e2e8de;border-radius:16px;padding:17px;box-shadow:0 3px 12px #183c2510}.panel h2{margin:0 0 12px;color:var(--green);font-size:20px}.totalrow{display:flex;justify-content:space-between;align-items:center;font-weight:750;font-size:17px}.total{font-size:28px;color:var(--green)}
+.field{display:block;width:100%;padding:12px;border:1px solid #cfd9ce;border-radius:10px;margin-top:7px;font:inherit;background:#fff}.label{font-weight:700;font-size:14px;margin-top:12px;display:block}
+button.primary{width:100%;border:0;border-radius:12px;background:#16804a;color:#fff;font-weight:800;font-size:16px;padding:15px;margin-top:14px;cursor:pointer}button.primary:disabled{opacity:.45;cursor:not-allowed}
+.small{font-size:12px;color:var(--muted);line-height:1.5}.contacts{display:grid;grid-template-columns:1fr;gap:9px}.contact{padding:12px;border-radius:12px;background:#f5f8f2;display:flex;justify-content:space-between;gap:10px;align-items:center}.contact strong{display:block}.contact a{color:var(--green);font-weight:750;text-decoration:none;white-space:nowrap}
+footer{text-align:center;background:#123b29;color:#e8f2e7;padding:20px 15px;font-size:12px}footer strong{color:var(--gold)}
+@media(min-width:560px){main{padding:24px 20px 42px}.menu{grid-template-columns:1fr 1fr}.contacts{grid-template-columns:1fr 1fr}.item{min-height:120px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="cross">✝</div>
+  <div class="church">C.S.I. Resurrection Town Church · Nandikotkur · Nandyal Diocese</div>
+  <h1>Youth Sunday<br>Canteen</h1>
+  <p class="subtitle">Food, fellowship &amp; support for our youth ministry</p>
+  <div class="pill">SUNDAY · 18 OCTOBER 2026</div>
+</header>
+<main>
+  <section class="intro">
+    <h2>Our Menu</h2>
+    <p>Choose your favourites, add quantities, and send your order on WhatsApp.</p>
+  </section>
+  <section class="menu" id="menu">
+    <article class="item" data-id="beef2" data-name="2 Rotis + Full Beef Curry" data-price="150">
+      <div><h3>2 Rotis + Full Beef Curry</h3><p class="desc">Two rotis served with full beef curry</p></div>
+      <div><div class="price">₹150</div><div class="qty"><button aria-label="Decrease quantity" onclick="change('beef2',-1)">−</button><span id="q-beef2">0</span><button aria-label="Increase quantity" onclick="change('beef2',1)">+</button></div></div>
+    </article>
+    <article class="item" data-id="beef1" data-name="1 Roti + Single Beef Curry" data-price="90">
+      <div><h3>1 Roti + Single Beef Curry</h3><p class="desc">One roti served with single beef curry</p></div>
+      <div><div class="price">₹90</div><div class="qty"><button aria-label="Decrease quantity" onclick="change('beef1',-1)">−</button><span id="q-beef1">0</span><button aria-label="Increase quantity" onclick="change('beef1',1)">+</button></div></div>
+    </article>
+    <article class="item" data-id="chicken2" data-name="2 Rotis + Full Chicken Curry" data-price="120">
+      <div><h3>2 Rotis + Full Chicken Curry</h3><p class="desc">Two rotis served with full chicken curry</p></div>
+      <div><div class="price">₹120</div><div class="qty"><button aria-label="Decrease quantity" onclick="change('chicken2',-1)">−</button><span id="q-chicken2">0</span><button aria-label="Increase quantity" onclick="change('chicken2',1)">+</button></div></div>
+    </article>
+    <article class="item" data-id="chicken1" data-name="1 Roti + Single Chicken Curry" data-price="80">
+      <div><h3>1 Roti + Single Chicken Curry</h3><p class="desc">One roti served with single chicken curry</p></div>
+      <div><div class="price">₹80</div><div class="qty"><button aria-label="Decrease quantity" onclick="change('chicken1',-1)">−</button><span id="q-chicken1">0</span><button aria-label="Increase quantity" onclick="change('chicken1',1)">+</button></div></div>
+    </article>
+    <article class="item" data-id="nuggets" data-name="3 Veg Nuggets" data-price="40">
+      <div><h3>3 Veg Nuggets</h3><p class="desc">Three crispy vegetable nuggets</p></div>
+      <div><div class="price">₹40</div><div class="qty"><button aria-label="Decrease quantity" onclick="change('nuggets',-1)">−</button><span id="q-nuggets">0</span><button aria-label="Increase quantity" onclick="change('nuggets',1)">+</button></div></div>
+    </article>
+    <article class="item" data-id="ponganalu" data-name="Ponganalu" data-price="40">
+      <div><h3>Ponganalu</h3><p class="desc">Traditional South Indian savoury snack</p></div>
+      <div><div class="price">₹40</div><div class="qty"><button aria-label="Decrease quantity" onclick="change('ponganalu',-1)">−</button><span id="q-ponganalu">0</span><button aria-label="Increase quantity" onclick="change('ponganalu',1)">+</button></div></div>
+    </article>
+  </section>
+  <section class="panel">
+    <h2>Your Order</h2>
+    <div id="summary" class="small">No items selected yet. Use + to add items from the menu.</div>
+    <div class="totalrow" style="margin-top:14px"><span>Total</span><span class="total" id="total">₹0</span></div>
+    <label class="label" for="customer">Your name</label><input class="field" id="customer" placeholder="Enter your name">
+    <label class="label" for="notes">Order notes (optional)</label><input class="field" id="notes" placeholder="Pickup time or other request">
+    <label class="label" for="contact">Send order to</label>
+    <select class="field" id="contact">
+      <option value="919912335054">Balu Mahendra · 99123 35054</option>
+      <option value="918333833423">Giri · 83338 33423</option>
+      <option value="917993772407">Rajesh · 7993772407</option>
+      <option value="919515197959">Santhosh · 9515197959</option>
+    </select>
+    <button class="primary" id="send" onclick="sendOrder()" disabled>Send Order on WhatsApp</button>
+    <p class="small">This page prepares an order message and opens WhatsApp. Your order is not confirmed until the contact replies.</p>
+  </section>
+  <section class="panel">
+    <h2>For Orders &amp; Enquiries</h2>
+    <div class="contacts">
+      <div class="contact"><div><strong>Balu Mahendra</strong><span class="small">99123 35054</span></div><a href="https://wa.me/919912335054" target="_blank" rel="noopener">WhatsApp ↗</a></div>
+      <div class="contact"><div><strong>Giri</strong><span class="small">83338 33423</span></div><a href="https://wa.me/918333833423" target="_blank" rel="noopener">WhatsApp ↗</a></div>
+      <div class="contact"><div><strong>Rajesh</strong><span class="small">7993772407</span></div><a href="https://wa.me/917993772407" target="_blank" rel="noopener">WhatsApp ↗</a></div>
+      <div class="contact"><div><strong>Santhosh</strong><span class="small">9515197959</span></div><a href="https://wa.me/919515197959" target="_blank" rel="noopener">WhatsApp ↗</a></div>
+    </div>
+  </section>
+  <section class="panel">
+    <h2>సంఘమంతటికి దేవుని నామమున వందనాలు</h2>
+    <p>యువజనుల ఆదివారం సందర్భంగా మన చర్చ్ యూత్ వారిచే నిర్వహించబడే క్యాంటీన్‌కు మీరందరూ ఆహ్వానితులు. రండి, భోజనం చేయండి, మన యువజన పరిచర్యకు మద్దతు ఇవ్వండి.</p>
+    <p class="small">Invited by: Dc. Rev. Abraham J. Premchand Babu · Secretary: M. Ambamma · Youth President: B. Balu Mahendra</p>
+  </section>
+</main>
+<footer><strong>CSI Resurrection Town Church</strong><br>Nandikotkur · Nandyal Diocese<br>Youth Sunday Canteen · 18 October 2026</footer>
+<script>
+const quantities={beef2:0,beef1:0,chicken2:0,chicken1:0,nuggets:0,ponganalu:0};
+const items=[...document.querySelectorAll('.item')].map(el=>({id:el.dataset.id,name:el.dataset.name,price:Number(el.dataset.price)}));
+function change(id,delta){quantities[id]=Math.max(0,quantities[id]+delta);document.getElementById('q-'+id).textContent=quantities[id];render();}
+function render(){let total=0,lines=[];for(const item of items){const q=quantities[item.id];if(q){const subtotal=q*item.price;total+=subtotal;lines.push(`${q} × ${item.name} — ₹${subtotal}`)}}document.getElementById('summary').innerHTML=lines.length?lines.map(x=>`<div style="padding:4px 0">${escapeHtml(x)}</div>`).join(''):'No items selected yet. Use + to add items from the menu.';document.getElementById('total').textContent='₹'+total;document.getElementById('send').disabled=total===0;}
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function sendOrder(){let total=0,lines=[];for(const item of items){const q=quantities[item.id];if(q){const subtotal=q*item.price;total+=subtotal;lines.push(`${q} x ${item.name} = ₹${subtotal}`)}}if(!total)return;const name=document.getElementById('customer').value.trim()||'Not provided';const notes=document.getElementById('notes').value.trim()||'None';const phone=document.getElementById('contact').value;const message=`*CSI Youth Sunday Canteen Order*%0AEvent: 18 October 2026%0AName: ${encodeURIComponent(name)}%0A%0A${lines.map(encodeURIComponent).join('%0A')}%0A*Total: ₹${total}*%0ANotes: ${encodeURIComponent(notes)}%0A%0APlease confirm availability and pickup details.`;window.open(`https://wa.me/${phone}?text=${message}`,'_blank','noopener');}
+</script>
+</body></html>
